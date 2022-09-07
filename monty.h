@@ -1,9 +1,17 @@
 #ifndef _MONTY_
 #define _MONTY_
 
+/* To make dprintf work */
+#define _POSIX_C_SOURCE  200809L
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -34,5 +42,49 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct globals - global structure to use in the functions
+ * @lifo: is stack or queue
+ * @cont: current line
+ * @arg: second parameter inside the current line
+ * @head: doubly linked list
+ * @fd: file descriptor
+ * @buffer: input text
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct globals
+{
+	int lifo;
+	unsigned int cont;
+	char  *arg;
+	stack_t *head;
+	FILE *fd;
+	char *buffer;
+} global_t;
+
+/* opcodes */
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+
+extern global_t vglo;
+
+/* get_opscode function */
+void (*get_opcodes(char *opc))(stack_t **stack, unsigned int line_number);
+
+/* imported str_functions */
+int _sch(char *s, char c);
+char *_strtoky(char *s, char *d);
+int _strcmp(char *s1, char *s2);
+
+/* doubly linked list */
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+stack_t *add_dnodeint(stack_t **head, const int n);
+void free_dlistint(stack_t *head);
+
+/* main */
+void free_vglo(void);
 
 #endif /*MONTY*/
