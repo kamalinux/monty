@@ -73,6 +73,7 @@ void _pop(stack_t **doubly, unsigned int cline);
 void _swap(stack_t **doubly, unsigned int cline);
 void _add(stack_t **doubly, unsigned int cline);
 void _nop(stack_t **doubly, unsigned int cline);
+void _sub(stack_t **doubly, unsigned int cline);
 
 extern global_t vglo;
 
