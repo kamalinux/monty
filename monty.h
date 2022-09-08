@@ -80,6 +80,7 @@ void _mod(stack_t **doubly, unsigned int cline);
 void _pchar(stack_t **doubly, unsigned int cline);
 void _pstr(stack_t **doubly, unsigned int cline);
 void _rotl(stack_t **doubly, unsigned int cline);
+void _rotr(stack_t **doubly, unsigned int cline);
 
 extern global_t vglo;
 
