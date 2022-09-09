@@ -93,12 +93,16 @@ int main(int argc, char *argv[])
 			vglo.arg = _strtoky(NULL, " \t\n");
 			f(&vglo.head, vglo.cont);
 		}
+		else if (lines[0] || lines[0][0] == '#')
+		{
+			f = get_opcodes(lines[0]);
+		}
+		else
+		{
+			return (0);
+		}
 		nlines = getline(&vglo.buffer, &size, fd);
 		vglo.cont++;
-		if (lines[0] && lines[0][0] == '#')
-		{
-			return 0;
-		}
 	}
 
 	free_vglo();
