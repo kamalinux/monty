@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 	fd = check_input(argc, argv);
 	start_vglo(fd);
 	nlines = getline(&vglo.buffer, &size, fd);
-	while (nlines != -1)
+	while (nlines != -1 && nlines == '#')
 	{
 		lines[0] = _strtoky(vglo.buffer, " \t\n");
 		if (lines[0])
