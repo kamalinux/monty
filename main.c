@@ -77,10 +77,10 @@ int main(int argc, char *argv[])
 	fd = check_input(argc, argv);
 	start_vglo(fd);
 	nlines = getline(&vglo.buffer, &size, fd);
-	while (nlines != -1 && nlines == '#')
+	while (nlines != -1)
 	{
 		lines[0] = _strtoky(vglo.buffer, " \t\n");
-		if (lines[0])
+		if (lines[0] && lines[0][0] != '#')
 		{
 			f = get_opcodes(lines[0]);
 			if (!f)
@@ -95,6 +95,10 @@ int main(int argc, char *argv[])
 		}
 		nlines = getline(&vglo.buffer, &size, fd);
 		vglo.cont++;
+		if (lines[0] && lines[0][0] == '#')
+		{
+			return 0;
+		}
 	}
 
 	free_vglo();
