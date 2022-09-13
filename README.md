@@ -1,8 +1,10 @@
+## 0x19. C - Stacks, Queues - LIFO, FIFO - Monty
+
 <p align="center">
   <img src="https://github.com/kamalinux/monty/blob/master/monty.png" alt="Monty logo">
 </p>
 
-# 0x19. C - Stacks, Queues - LIFO, FIFO - Monty
+# Monty
 
 Monty is an interpreter of Monty ByteCodes files. Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python).
 
